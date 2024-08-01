@@ -78,13 +78,15 @@ function getAction(form){
     let idxCount = -1;
     for(listing of allListing){
         idxCount++;
-        if(search.value.toLowerCase() === listing.country.toLowerCase()){
-            form.action = `/listings/${listing.country}`
+        if(search.value.toLowerCase() !== listing.country.toLowerCase()){
+            document.getElementsByClassName("listing-link")[idxCount].style.display="none";
+            form.action = "#";
         }
         else if(search.value.toLowerCase() === listing.title.toLowerCase() || search.value.toLowerCase() === listing.location.toLowerCase()){
             form.action = `/listings/${listing._id}`;
         }else{
-            form.action = `/listings/random`;
+            document.getElementsByClassName("listing-link")[idxCount].style.display="";
+            form.action = "#";
         }
     }
 }
