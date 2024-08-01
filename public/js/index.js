@@ -1,3 +1,4 @@
+// filter logic
 let filters = document.getElementsByClassName("filter");
 for(let filter of filters){
     filter.addEventListener("click", ()=>{
@@ -15,8 +16,8 @@ for(let filter of filters){
     });
 }
 
+// taxSwitch toggle logic
 let taxSwitch = document.getElementById("flexSwitchCheckDefault");
-        
 taxSwitch.addEventListener("click", () => {
     let taxInfo = document.getElementsByClassName("tax-info");
     for(info of taxInfo){
@@ -28,20 +29,20 @@ taxSwitch.addEventListener("click", () => {
     }
 });
 
+// search logic
 let search = document.querySelector(".search-inp");
 let suggestions_container = document.getElementById("suggestions");
-let listing_Id;
 search.addEventListener("input", function() {
     let query = search.value.toLowerCase();
     suggestions_container.innerHTML = '';
     suggestions_container.style.display="block";
-
+// auto complete logic
     if(query){
             const filtered_Suggestion = allListing.filter(listing =>(
                 listing.title.toLowerCase().includes(query) || listing.location.toLowerCase().includes(query)
             ));
-            filtered_Suggestion.forEach(listing => {
-                listing_Id = listing._id;
+        
+            filtered_Suggestion.forEach(listing => {        
               const div = document.createElement("div");
               div.className = "suggestion_item";
               if(listing.title.toLowerCase().includes(query)){
@@ -50,14 +51,12 @@ search.addEventListener("input", function() {
                 div.textContent = listing.location;
               }
               
-
               div.addEventListener("click", ()=>{
                 if(listing.title.toLowerCase().includes(query)){
                     search.value = listing.title;
                 }else if(listing.location.toLowerCase().includes(query)){
                     search.value = listing.location;
                 }
-                listing_Id = listing._id;
                 suggestions_container.innerHTML = '';
                 suggestions_container.style.display = "block";
               });
@@ -75,8 +74,18 @@ document.addEventListener('click', function(event) {
         suggestions_container.style.display = "none";
     }
 });
-
 function getAction(form){
-    form.action = `/listings/${listing_Id}`
+    let idxCount = -1;
+    for(listing of allListing){
+        idxCount++;
+        if(search.value.toLowerCase() === listing.country.toLowerCase()){
+            form.action = `/listings/${listing.country}`
+        }
+        else if(search.value.toLowerCase() === listing.title.toLowerCase() || search.value.toLowerCase() === listing.location.toLowerCase()){
+            form.action = `/listings/${listing._id}`;
+        }else{
+            form.action = `/listings/random`;
+        }
+    }
 }
 
