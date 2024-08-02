@@ -78,15 +78,15 @@ function getAction(form){
     let idxCount = -1;
     for(listing of allListing){
         idxCount++;
-        if(search.value.toLowerCase() !== listing.country.toLowerCase()){
+        if(listing.country.toLowerCase().includes(search.value.toLowerCase())){
             document.getElementsByClassName("listing-link")[idxCount].style.display="none";
-            form.action = "#";
+            form.action = "/listings";
         }
         else if(search.value.toLowerCase() === listing.title.toLowerCase() || search.value.toLowerCase() === listing.location.toLowerCase()){
             form.action = `/listings/${listing._id}`;
         }else{
             document.getElementsByClassName("listing-link")[idxCount].style.display="";
-            form.action = "#";
+            form.action = "/listings";
         }
     }
 }
