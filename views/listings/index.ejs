@@ -2,7 +2,7 @@
 <script>
     const allListing = <%- JSON.stringify(allListings) %>;
 </script>
-    <!-- <div id="filters">
+    <div id="filters">
         <div class="scroll-bar">
             <div class="filter" id="trending">
                 <div><i class="fa-solid fa-fire-flame-curved"></i></div>
@@ -48,8 +48,7 @@
                 <label class="form-check-label" for="flexSwitchCheckDefault">amount after taxes</label>
             </div>
         </div>
-    </div> -->
-    <%- include("/layouts/filter.ejs") %>
+    </div>
     <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 mt-3">
         <% for(let listing of allListings){ %>
             <a href="/listings/<%= listing._id %>" class="listing-link">
