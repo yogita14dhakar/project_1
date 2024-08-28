@@ -39,21 +39,21 @@ search.addEventListener("input", function() {
 // auto complete logic
     if(query){
             const filtered_Suggestion = allListing.filter(listing =>(
-                listing.title.toLowerCase().includes(query) || listing.location.toLowerCase().includes(query)
+                listing.location.toLowerCase().includes(query) || listing.country.toLowerCase().includes(query)
             ));
         
             filtered_Suggestion.forEach(listing => {        
               const div = document.createElement("div");
               div.className = "suggestion_item";
-              if(listing.title.toLowerCase().includes(query)){
-                div.textContent = listing.title;
+              if(listing.country.toLowerCase().includes(query)){
+                div.textContent = listing.country;
               }else if(listing.location.toLowerCase().includes(query)){
                 div.textContent = listing.location;
               }
               
               div.addEventListener("click", ()=>{
-                if(listing.title.toLowerCase().includes(query)){
-                    search.value = listing.title;
+                if(listing.country.toLowerCase().includes(query)){
+                    search.value = listing.country;
                 }else if(listing.location.toLowerCase().includes(query)){
                     search.value = listing.location;
                 }
@@ -74,20 +74,4 @@ document.addEventListener('click', function(event) {
         suggestions_container.style.display = "none";
     }
 });
-function getAction(form){
-    let idxCount = -1;
-    for(listing of allListing){
-        idxCount++;
-        if(listing.country.toLowerCase().includes(search.value.toLowerCase())){
-            document.getElementsByClassName("listing-link")[idxCount].style.display="none";
-            form.action = "/listings";
-        }
-        else if(search.value.toLowerCase() === listing.title.toLowerCase() || search.value.toLowerCase() === listing.location.toLowerCase()){
-            form.action = `/listings/${listing._id}`;
-        }else{
-            document.getElementsByClassName("listing-link")[idxCount].style.display="";
-            form.action = "/listings";
-        }
-    }
-}
 

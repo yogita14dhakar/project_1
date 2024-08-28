@@ -8,10 +8,11 @@
         <div class="navbar-nav">
           <a class="nav-link" href="/listings">Explore</a>
         </div>
+
         <div class="navbar-nav ms-auto">
-          <form class="d-flex" role="search" onsubmit="getAction(this)">
+          <form class="d-flex" role="search" action="/listings/search" method="get">
             <div class="search-inp-box">
-              <input class="form-control me-2 search-inp" autocomplete="off" id="search-inp" type="search" placeholder="Search destination">
+              <input class="form-control me-2 search-inp" autocomplete="off" id="search-inp" type="search" placeholder="search with location">
               <div class="suggestions" id="suggestions"></div>
             </div>
             <button class="btn search-btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
@@ -32,3 +33,4 @@
     </div>
     
 </nav>
+<script src="/js/index.js"></script>
