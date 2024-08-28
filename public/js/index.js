@@ -75,3 +75,9 @@ document.addEventListener('click', function(event) {
     }
 });
 
+//adding search url in form action
+function onSearch(){
+    let action_src = `/listings/search/${search.value}`;
+    let form = document.getElementById("d-flex");
+    form.action = action_src;
+}
