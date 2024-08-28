@@ -12,14 +12,14 @@ module.exports.index = async (req, res) => {
 //search based on location or country on one page
 module.exports.searchListing = async (req, res) => {
     let { country } = req.params;
-    const allListings = await Listing.find({
+    const allListing = await Listing.find({
         $or: [{country: country}, {location: country}]
     });
     if(!allListings){
         req.flash("error", `Listing in ${country} does not exist!`)
         res.redirect("/listings");
     }
-    res.render("listings/search.ejs", {allListings});
+    res.render("listings/search.ejs", {allListing});
 };
 
 //new form to create new listing
