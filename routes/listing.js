@@ -19,7 +19,7 @@ router
 );
 
 //search route
-router.get("/search", wrapAsync(listingController.searchListing));
+router.get("/search/:loc", wrapAsync(listingController.searchListing));
 
 //new route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
