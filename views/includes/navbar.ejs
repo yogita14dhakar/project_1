@@ -10,7 +10,7 @@
         </div>
 
         <div class="navbar-nav ms-auto">
-          <form class="d-flex" role="search" action="/listings/search" method="get">
+          <form class="d-flex" role="search" onsubmit="onSearch()" method="get">
             <div class="search-inp-box">
               <input class="form-control me-2 search-inp" autocomplete="off" id="search-inp" type="search" placeholder="search with location">
               <div class="suggestions" id="suggestions"></div>
@@ -33,4 +33,3 @@
     </div>
     
 </nav>
-<script src="/js/index.js"></script>
