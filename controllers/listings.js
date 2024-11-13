@@ -11,7 +11,7 @@ module.exports.index = async (req, res) => {
 //search based on location or country on one page
 module.exports.searchListing = async (req, res) => {
     let { country } = req.params;
-    const allListing = await Listing.find({country: country});
+    const allListing = await Listing.find({country: {$regex:/country/i}});
     if(!allListing){
         req.flash("error", `Listing in ${country} does not exist!`)
         res.redirect("/listings");
