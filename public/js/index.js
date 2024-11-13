@@ -38,6 +38,7 @@ search.addEventListener("input", function() {
     suggestions_container.style.display="block";
 // auto complete logic
     if(query){
+        const unique = new Set();
             const filtered_Suggestion = allListing.filter(listing =>(
                 listing.location.toLowerCase().includes(query) || listing.country.toLowerCase().includes(query)
             ));
@@ -45,10 +46,12 @@ search.addEventListener("input", function() {
             filtered_Suggestion.forEach(listing => {        
               const div = document.createElement("div");
               div.className = "suggestion_item";
-              if(listing.country.toLowerCase().includes(query)){
+              if(!unique.has(listing.country) && listing.country.toLowerCase().includes(query)){
                 div.textContent = listing.country;
-              }else if(listing.location.toLowerCase().includes(query)){
+                unique.add(listing.country);
+              }else if(!unique.has(listing.location) && listing.location.toLowerCase().includes(query)){
                 div.textContent = listing.location;
+                unique.add(listing.location);
               }
               
               div.addEventListener("click", ()=>{
@@ -78,6 +81,5 @@ document.addEventListener('click', function(event) {
 //adding search url in form action
 function onSearch(){
     let action_src = `/listings/search/${search.value}`;
-    let form = document.getElementById("d-flex");
-    form.action = action_src;
+    document.getElementById("d-flex").action = action_src;
 }

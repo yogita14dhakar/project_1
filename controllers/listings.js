@@ -1,4 +1,3 @@
-const { default: mongoose } = require("mongoose");
 const Listing = require("../models/listing.js");
 const tt = require("@tomtom-international/web-sdk-services/dist/services-node.min.js");
 const mapkey = process.env.MAP_KEY;

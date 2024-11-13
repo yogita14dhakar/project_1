@@ -10,12 +10,12 @@
         </div>
 
         <div class="navbar-nav ms-auto">
-          <form class="d-flex" role="search" onsubmit="onSearch()" method="get">
+          <form id="d-flex" action="something.asp" method="get">
             <div class="search-inp-box">
               <input class="form-control me-2 search-inp" autocomplete="off" id="search-inp" type="search" placeholder="search with location">
               <div class="suggestions" id="suggestions"></div>
             </div>
-            <button class="btn search-btn" type="submit"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
+            <button class="btn search-btn" onclick="onSearch()"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
           </form>
         </div>
         
