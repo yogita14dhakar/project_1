@@ -4,52 +4,52 @@
 </script>
     <div id="filters">
         <div class="scroll-bar">
-            <div class="filter" id="trending">
+            <div class="filter mt-4" id="trending">
                 <div><i class="fa-solid fa-fire-flame-curved"></i></div>
                 <p>Trending</p>
             </div>
-            <div class="filter" id="rooms">
+            <div class="filter mt-4" id="rooms">
                 <div><i class="fa-solid fa-bed"></i></div>
                 <p>Rooms</p>
             </div>
-            <div class="filter" id="mountains">
+            <div class="filter mt-4" id="mountains">
                 <div><i class="fa-solid fa-mountain"></i></div>
                 <p>Mountains</p>
             </div>
-            <div class="filter" id="iconic cities">
+            <div class="filter mt-4" id="iconic cities">
                 <div><i class="fa-solid fa-city"></i></div>
                 <p>Iconic Cities</p>
             </div>
-            <div class="filter" id="castles">
+            <div class="filter mt-4" id="castles">
                 <div><i class="fa-brands fa-fort-awesome"></i></div>
                 <p>Castles</p>
             </div>
-            <div class="filter" id="arctic">
+            <div class="filter mt-4" id="arctic">
                 <div><i class="fa-solid fa-snowflake"></i></div>
                 <p>Arctic</p>
             </div>
-            <div class="filter" id="farms">
+            <div class="filter mt-4" id="farms">
                 <div><i class="fa-solid fa-cow"></i></div>
                 <p>Farms</p>
             </div>
-            <div class="filter" id="camping">
+            <div class="filter mt-4" id="camping">
                 <div><i class="fa-solid fa-campground"></i></div>
                 <p>Camping</p>
             </div>
-            <div class="filter" id="deserts">
+            <div class="filter mt-4" id="deserts">
                 <div><i class="fa-solid fa-mountain-sun"></i></div>
                 <p>Deserts</p>
             </div>
         </div>
 
-        <div class="tax-toggle">
+        <div class="tax-toggle p-lg-3 p-md-2 rounded-pill">
             <div class="form-check-reverse form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">amount after taxes</label>
             </div>
         </div>
     </div>
-    <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2 mt-3">
+    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 mt-3">
         <% for(let listing of allListings){ %>
             <a href="/listings/<%= listing._id %>" class="listing-link">
                 <div class="card col listing-card">

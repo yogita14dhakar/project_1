@@ -4,19 +4,13 @@ const mapkey = process.env.MAP_KEY;
 
 //to show all listings on one page
 module.exports.index = async (req, res) => {
-    const allListings = await Listing.find({});
-    res.render("listings/index.ejs", {allListings});
-};
-
-//search based on location or country on one page
-module.exports.searchListing = async (req, res) => {
-    let { country } = req.params;
-    const allListing = await Listing.find({country: country});
-    if(!allListing){
+    let {country} = req.query.loc;
+    const allListings = (!country) ? await Listing.find({}) : await Listing.find({ $or: [{country: country}, {location: country}]});
+    if(!allListings){
         req.flash("error", `Listing in ${country} does not exist!`)
         res.redirect("/listings");
     }
-    res.render("listings/search.ejs", {allListing});
+    res.render("listings/index.ejs", {allListings});
 };
 
 //new form to create new listing

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm bg-body-light border-bottom sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+      <a class="navbar-brand"><i class="fa-regular fa-compass"></i></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -10,12 +10,12 @@
         </div>
 
         <div class="navbar-nav ms-auto">
-          <form id="d-flex" action="something.asp" method="get">
+          <form action="/listings" method="get">
             <div class="search-inp-box">
-              <input class="form-control me-2 search-inp" autocomplete="off" id="search-inp" type="search" placeholder="search with location">
+              <input class="form-control me-2 p-2 search-inp" name="loc" autocomplete="off" id="search-inp" type="search" placeholder="search with location">
               <div class="suggestions" id="suggestions"></div>
             </div>
-            <button class="btn search-btn" onclick="onSearch()"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
+            <button class="btn search-btn rounded-circle"><i class="fa fa-search me-2" aria-hidden="true"></i></button>
           </form>
         </div>
         

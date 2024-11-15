@@ -26,7 +26,6 @@ body{
 .search-btn{
     background-color: rgb(253, 11, 11) !important;
     color: white !important; 
-    border-radius: 25px !important;
     padding: 0 1rem 0 1rem !important;
     margin-left:0.5rem !important;
 }
@@ -36,12 +35,10 @@ body{
 }
 .search-btn i{
     display: inline;
-    margin-right: 0.5rem ;
 }
 .search-inp{
     display: block;
     border-radius: 25px !important;
-    padding: 0.5rem 2rem 0.5rem 2rem !important;
     font-size: 0.8rem !important;
 }
 .suggestions{
@@ -178,7 +175,6 @@ body{
     scrollbar-width: none;
 }
 .filter{
-    margin-top: 2rem;
     margin-right: 1.5rem;
     text-align: center;
     opacity: 0.7;
@@ -195,19 +191,14 @@ body{
 }
 .tax-toggle{
     border: 1px solid black;
-    border-radius: 1rem;
     height: 3.5rem;
-    padding: 1rem;
     margin-left: 3rem;
     margin-top: 1rem;
 }
 @media (max-width: 900px) {
     .tax-toggle{
-        border: 1px solid black;
-        border-radius: 0.5rem;
         height: 2.5rem;
         font-size: 11px;
-        padding: 0.5rem;
         margin-left: 2rem;
         margin-top: 0.5rem;
     }
