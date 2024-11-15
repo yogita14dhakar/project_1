@@ -37,7 +37,6 @@ body{
     display: inline;
 }
 .search-inp{
-    display: block;
     border-radius: 25px !important;
     font-size: 0.8rem !important;
 }
