@@ -5,7 +5,7 @@ const mapkey = process.env.MAP_KEY;
 //to show all listings on one page
 module.exports.index = async (req, res) => {
     let country = req.query.loc;
-    console.log(typeOf(country));
+    console.log(typeof(country));
     const allListings = !country ? await Listing.find({}) : await Listing.find({ country: "/" + country + "/i"});
     if(!allListings){
         req.flash("error", `Listing in ${country} does not exist!`)
