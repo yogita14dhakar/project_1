@@ -10,6 +10,7 @@ module.exports.index = async (req, res) => {
         req.flash("error", `Listing in ${country} does not exist!`)
         res.redirect("/listings");
     }
+    console.log(allListings);
     res.render("listings/index.ejs", {allListings});
 };
 
