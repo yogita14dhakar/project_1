@@ -32,7 +32,6 @@ taxSwitch.addEventListener("click", () => {
 // search logic
 let search = document.querySelector(".search-inp");
 let suggestions_container = document.getElementById("suggestions");
-let search_btn = document.getElementsByClassName("search-btn");
 search.addEventListener("input", function() {
     let query = search.value.toLowerCase();
     suggestions_container.innerHTML = '';
@@ -69,7 +68,7 @@ search.addEventListener("input", function() {
             });  
     }
 });
-search_btn.addEventListener('click', function(event) {
+document.addEventListener('click', function(event) {
     if (!search.contains(event.target) && !suggestions_container.contains(event.target)) {
       suggestions_container.innerHTML = '';
       suggestions_container.style.display = "block";
