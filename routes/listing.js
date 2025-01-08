@@ -8,7 +8,7 @@ const {storage} = require("../cloudconfig.js");
 const upload = multer({ storage });
 //root route 
 router
-.route("/listings")
+.route("/")
 .get(wrapAsync(listingController.index)
 )
 .post(
