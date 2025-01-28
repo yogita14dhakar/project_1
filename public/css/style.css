@@ -190,13 +190,12 @@ body{
 }
 .tax-toggle{
     border: 1px solid black;
-    height: 3.5rem;
     margin-left: 3rem;
     margin-top: 1rem;
 }
 @media (max-width: 900px) {
     .tax-toggle{
-        height: 2.5rem;
+        
         font-size: 11px;
         margin-left: 2rem;
         margin-top: 0.5rem;
