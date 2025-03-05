@@ -6,11 +6,11 @@ const mapkey = process.env.MAP_KEY;
 module.exports.index = async (req, res) => {
     let country = req.query.loc;
     
-    const allListings = !country ? await Listing.find({}) : await Listing.find({ country: country });
+    const allListings = !country ? await Listing.find({}) : await Listing.find({ country: { $regex: new RegExp(country, 'i') } });
     console.log(allListings);
     if(!allListings){
         req.flash("error", `Listing in ${country} does not exist!`)
-        res.redirect("/listings");
+        res.redirect("/");
     }
     res.render("listings/index.ejs", {allListings});
 };
@@ -35,7 +35,7 @@ module.exports.showIndividualListing = async (req, res) => {
     
     if(!listing){
         req.flash("error", "Listing You Are Looking For Does Not Exist!");
-        res.redirect("/listings");
+        res.redirect("/");
     }
     
     res.render("listings/show.ejs", {listing});
@@ -58,7 +58,7 @@ module.exports.createNewListing = async (req, res) => {
     newListing.geometry = response.toGeoJson().features[0].geometry;
     await newListing.save();
     req.flash("success", "New Listing Created!");
-    res.redirect("/listings");
+    res.redirect("/");
 };
 
 //form to edit listing
@@ -67,7 +67,7 @@ module.exports.renderEditForm = async (req, res) => {
     let listing = await Listing.findById(id);
     if(!listing){
         req.flash("error", "Listing You Are Looking For Does Not Exist!");
-        res.redirect("/listings");
+        res.redirect("/");
     }
     let originalImage = listing.image.url;
     originalImage = originalImage.replace("/upload", "/upload/w_100");
@@ -94,5 +94,5 @@ module.exports.deleteListing = async (req, res) => {
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log(deletedListing);
     req.flash("success", "Listing Deleted!");
-    res.redirect("/listings");
+    res.redirect("/");
 };
