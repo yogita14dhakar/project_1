@@ -6,7 +6,7 @@ const mapkey = process.env.MAP_KEY;
 module.exports.index = async (req, res) => {
     let country = req.query.loc;
     
-    const allListings = !country ? await Listing.find({}) : await Listing.find({ country: { $regex: new RegExp(country, 'i') } });
+    const allListings = !country ? await Listing.find({}) : await Listing.find({ $or: [{country: { $regex: new RegExp(country, 'i') }}, {location: { $regex: new RegExp(country, 'i') }}] });
     console.log(allListings);
     if(!allListings){
         req.flash("error", `Listing in ${country} does not exist!`)
